@@ -58,6 +58,8 @@ void BaseLayer::initialize(int stage)
         upperControlOut = findGate("upperControlOut");
         lowerControlIn = findGate("lowerControlIn");
         lowerControlOut = findGate("lowerControlOut");
+        out= findGate("out");
+        in = findGate("in");
     }
 }
 
@@ -90,6 +92,10 @@ void BaseLayer::handleMessage(cMessage* msg)
         handleLowerControl(msg);
     }
     else if (msg->getArrivalGateId() == lowerLayerIn) {
+        recordPacket(PassedMessage::INCOMING, PassedMessage::LOWER_DATA, msg);
+        handleLowerMsg(msg);
+    }
+    else if (msg->getArrivalGateId() == in) {
         recordPacket(PassedMessage::INCOMING, PassedMessage::LOWER_DATA, msg);
         handleLowerMsg(msg);
     }

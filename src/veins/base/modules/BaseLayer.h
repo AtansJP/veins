@@ -65,6 +65,8 @@ protected:
     int upperControlOut;
     int lowerControlIn;
     int lowerControlOut;
+    int in;
+    int out;
     /*@}*/
 
     /** @brief The last message passed through this layer. This variable will be only not NULL if we are
