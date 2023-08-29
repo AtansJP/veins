@@ -54,7 +54,11 @@ module Car
         nic.upperLayerIn <-- appl.lowerLayerOut;
         nic.upperControlOut --> appl.lowerControlIn;
         nic.upperControlIn <-- appl.lowerControlOut;
+    
+      
 
         veinsradioIn --> nic.radioIn;
+        appl.out --> appl.in;
+   		
 
 }
