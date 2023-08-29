@@ -1,3 +1,10 @@
+This is a fork of the popular veins project where I attempt malicious message detection using a range of techniques and then test them against sample malicious messages to see how they hold up.
+
+This is done by extendig the Traci example module and then using that module in my example Vanet_sim project folder which has a basic osm simulation loaded also.
+
+To use this, please import this project as you would import a normal veins project into omnetpp and then navigate to the examples folder and compile the Vanet_sim project.
+
+The original veins documentation and licensing is below:
 
 Veins - The open source vehicular network simulation framework.
 
