@@ -156,6 +156,7 @@ protected:
     uint32_t dataLengthBits;
     uint32_t dataUserPriority;
     bool dataOnSch;
+    //int numVehicles;
 
     /* WSA settings */
     int currentOfferedServiceId;

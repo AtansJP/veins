@@ -48,18 +48,21 @@ void MyVeinsApp::onBSM(DemoSafetyMessage* bsm)
 {
     // Your application has received a beacon message from another car or RSU
     // code for handling the message goes here
+    //TODO: check for malicious message here
 }
 
 void MyVeinsApp::onWSM(BaseFrame1609_4* wsm)
 {
     // Your application has received a data message from another car or RSU
     // code for handling the message goes here, see TraciDemo11p.cc for examples
+    //TODO:check the logic for detection here
 }
 
 void MyVeinsApp::onWSA(DemoServiceAdvertisment* wsa)
 {
     // Your application has received a service advertisement from another car or RSU
     // code for handling the message goes here, see TraciDemo11p.cc for examples
+    //TODO: also needs to check this  here
 }
 
 void MyVeinsApp::handleSelfMsg(cMessage* msg)

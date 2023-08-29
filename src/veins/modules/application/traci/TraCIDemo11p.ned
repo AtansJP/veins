@@ -25,6 +25,13 @@ import org.car2x.veins.modules.application.ieee80211p.DemoBaseApplLayer;
 
 simple TraCIDemo11p extends DemoBaseApplLayer
 {
-    @class(veins::TraCIDemo11p);
-    @display("i=block/app2");
+	parameters:
+   		@class(veins::TraCIDemo11p);
+    	@display("i=block/app2");
+    	int numVehicles= default(0);//default size of vehicles
+    gates:
+    	output out;
+    	input in;
+
+	
 }

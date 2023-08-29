@@ -23,6 +23,12 @@
 #pragma once
 
 #include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
+#include "malicious_message_m.h"
+
+//#define SIM_1
+//#define SIM_2
+#define SIM_3
+//#define SIM_4
 
 namespace veins {
 
@@ -39,15 +45,32 @@ namespace veins {
  * @author David Eckhoff : rewriting, moving functionality to DemoBaseApplLayer, adding WSA
  *
  */
+#define THRESHOLD_SPEED 10.0
+#define THRESHOLD_POSITION 5.0
+struct MessageInfo {
+    Coord position;
+    double speed;
+    simtime_t generationTime;
+};
+
+std::map<int, MessageInfo> recentMessages;
+
 
 class VEINS_API TraCIDemo11p : public DemoBaseApplLayer {
 public:
     void initialize(int stage) override;
+    void finish() override;
 
 protected:
     simtime_t lastDroveAt;
     bool sentMessage;
     int currentSubscribedServiceId;
+    double detectionThreshold;
+    int maliciousMessagesDetected;
+    bool isMalicious;
+    double maliciousMessageInterval;
+    std::vector<LAddress::L2Type>macHistory; //flagged mac addresses
+    std::vector<std::string>MalContents;//vector of malicious content keywords
 
 protected:
     void onWSM(BaseFrame1609_4* wsm) override;
@@ -55,6 +78,11 @@ protected:
 
     void handleSelfMsg(cMessage* msg) override;
     void handlePositionUpdate(cObject* obj) override;
+
+    double computeTrustValue(BaseFrame1609_4* frame) ;
+    void handleMaliciousMessage(BaseFrame1609_4* frame);
+    bool analyzeMessageContent(BaseFrame1609_4* frame);
+    bool verifyMessageAddress(BaseFrame1609_4* frame) ;
 };
 
 } // namespace veins

@@ -58,6 +58,7 @@ void DemoBaseApplLayer::initialize(int stage)
         dataLengthBits = par("dataLengthBits");
         dataOnSch = par("dataOnSch").boolValue();
         dataUserPriority = par("dataUserPriority");
+       // numVehicles = par("numVehicles");
 
         wsaInterval = par("wsaInterval").doubleValue();
         currentOfferedServiceId = -1;
@@ -316,3 +317,4 @@ void DemoBaseApplLayer::checkAndTrackPacket(cMessage* msg)
         generatedWSMs++;
     }
 }
+//Reading TraCI message
