@@ -29,6 +29,7 @@ simple TraCIDemo11p extends DemoBaseApplLayer
    		@class(veins::TraCIDemo11p);
     	@display("i=block/app2");
     	int numVehicles= default(0);//default size of vehicles
+    	int numSimulations = default(2);//default num of simualations
     gates:
     	output out;
     	input in;

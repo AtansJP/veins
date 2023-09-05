@@ -25,10 +25,25 @@
 #include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
 #include "malicious_message_m.h"
 
+#define THRESHOLD_SPEED 50.0
+#define THRESHOLD_POSITION 550.0
+#define MAX_RECENT_MESSAGES 200
+#define SIM_NORMAL_MESSAGES //allowing us to simulate normal messages
+
 //#define SIM_1
 //#define SIM_2
-#define SIM_3
+//#define SIM_3
 //#define SIM_4
+//#define SIM_5
+//#define SIM_6
+//#define SIM_7
+//#define SIM_8
+#define SIM_9
+
+
+
+
+
 
 namespace veins {
 
@@ -43,16 +58,17 @@ namespace veins {
  *
  * @author Christoph Sommer : initial DemoApp
  * @author David Eckhoff : rewriting, moving functionality to DemoBaseApplLayer, adding WSA
+ * @author Atans Joseph-Palmer : rewriting to allow for malicious message detection
  *
  */
-#define THRESHOLD_SPEED 10.0
-#define THRESHOLD_POSITION 5.0
+
 struct MessageInfo {
     Coord position;
     double speed;
     simtime_t generationTime;
 };
 
+int messageCounter = 0;
 std::map<int, MessageInfo> recentMessages;
 
 
@@ -67,6 +83,7 @@ protected:
     int currentSubscribedServiceId;
     double detectionThreshold;
     int maliciousMessagesDetected;
+    int maliciousMessagesGenerated;
     bool isMalicious;
     double maliciousMessageInterval;
     std::vector<LAddress::L2Type>macHistory; //flagged mac addresses
